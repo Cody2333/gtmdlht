@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN" ng-app="app">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,93 +16,94 @@
     <link rel="stylesheet" href="/stylesheets/console.css">
     <link rel="stylesheet" href="/stylesheets/consoleCar.css">
 
-  </head>
+</head>
 
-  <body>
+<body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <span class="navbar-brand" style="color: white"> Jike 后台管理 </span>
-          <ul class="nav navbar-nav mynav">
-            <li><a href="/admin/consoleRoute.html">路线</a></li>
-            <li><a href="/admin/consoleUser.html">用户</a></li>
-            <li><a href="/admin/consoleCoupon.html">优惠券</a></li>
-            <li class="active"><a href="/admin/consoleCar.html">车辆</a></li>
-            <li><a href="/admin/consoleOrder.html">订单</a></li>
-            <li><a href="/admin/consoleLocation.html">地点</a></li>
-          </ul>
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <span class="navbar-brand" style="color: white"> InstCar 后台管理 </span>
+                <ul class="nav navbar-nav mynav">
+                    <li><a href="/admin/consoleRoute.html">路线</a></li>
+                    <li><a href="/admin/consoleUser.html">用户</a></li>
+                    <li><a href="/admin/consoleCoupon.html">优惠券</a></li>
+                    <li class="active"><a href="/admin/consoleCar.html">车辆</a></li>
+                    <li><a href="/admin/consoleOrder.html">订单</a></li>
+                    <li><a href="/admin/consoleLocation.html">地点</a></li>
+                </ul>
+            </div>
         </div>
-      </div>
     </nav>
 
     <div class="container-fluid">
-      <div class="row" ng-controller="PageController">
-        <div class="col-sm-3 col-md-2 sidebar">
-          <ul class="nav nav-sidebar">
-            <li ng-class="{'active': page.pageName=='ViewCarType'}">
-              <a href="##" ng-click="switchPage('ViewCarType')">查看大巴类型</a>
-            </li>
-            <li ng-class="{'active': page.pageName=='AddCarType'}">
-              <a href="##" ng-click="switchPage('AddCarType')">添加大巴</a>
-            </li>
-          </ul>
+        <div class="row" ng-controller="PageController">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li ng-class="{'active': page.pageName=='ViewCarType'}">
+                        <a href="##" ng-click="switchPage('ViewCarType')">查看大巴类型</a>
+                    </li>
+                    <li ng-class="{'active': page.pageName=='AddCarType'}">
+                        <a href="##" ng-click="switchPage('AddCarType')">添加大巴</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
 
-      <!-- view car page -->
-      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="ViewCarType">
-        <div ng-if="page.pageName=='ViewCarType'">
-          <div class="table-responsive">
-            <table class="table table-striped table-condensed table-bordered">
-              <thead>
-                <tr>
-                  <th>供应公司</th>
-                  <th>类型</th>
-                  <th>座位数</th>
-                  <th>操作</th>
-                </tr>
-              </thead>
-                <tr ng-repeat = 'item in carTypes track by $index'>
-                  <td>{{item.company}}</td>
-                  <td>{{item.type}}</td>
-                  <td>{{item.totalSeat}}</td>
-                  <td>
-                    <div class="btn-group" role="group">
-                      <button type="button" class="btn btn-default" ng-click="delete($index)">删除</button>
+        <!-- view car page -->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="ViewCarType">
+            <div ng-if="page.pageName=='ViewCarType'">
+                <div class="table-responsive">
+                    <table class="table table-striped table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th>供应公司</th>
+                                <th>类型</th>
+                                <th>座位数</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tr ng-repeat='item in carTypes track by $index'>
+                            <td>{{item.company}}</td>
+                            <td>{{item.type}}</td>
+                            <td>{{item.totalSeat}}</td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-default" ng-click="delete($index)">删除</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- add car -->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="AddCarType">
+            <div ng-if="page.pageName=='AddCarType'">
+                <div class="row">
+                    <div class="form-group">
+                        <label for="inputCompany">供应公司</label>
+                        <input type="text" class="form-control input" id="inputCompany" ng-model="carType.company" placeholder="company">
                     </div>
-                  </td>
-                </tr>
-              <tbody>
-              </tbody>
-            </table>
-          </div>
+                    <div class="form-group">
+                        <label for="inputType">大巴类型</label>
+                        <input type="text" class="form-control input" id="inputType" ng-model="carType.type" placeholder="type">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputTotalSeat">大巴座位数</label>
+                        <input type="number" class="form-control input" id="inputTotalSeat" ng-model="carType.totalSeat" placeholder="totalSeat">
+                    </div>
+                    <button class="btn btn-primary btnSubmit" ng-click="submit()">提交</button>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <!-- add car -->
-      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="AddCarType">
-        <div ng-if="page.pageName=='AddCarType'">
-          <div class="row">
-            <div class="form-group">
-              <label for="inputCompany">供应公司</label>
-              <input type="text" class="form-control input" id="inputCompany" ng-model="carType.company" placeholder="company">
-            </div>
-            <div class="form-group">
-              <label for="inputType">大巴类型</label>
-              <input type="text" class="form-control input" id="inputType" ng-model="carType.type" placeholder="type">
-            </div>
-            <div class="form-group">
-              <label for="inputTotalSeat">大巴座位数</label>
-              <input type="number" class="form-control input" id="inputTotalSeat" ng-model="carType.totalSeat" placeholder="totalSeat">
-            </div>
-            <button class="btn btn-primary btnSubmit" ng-click="submit()">提交</button>
-          </div>
-        </div>
-      </div>
     </div>
-  </body>
+</body>
 
 
-  <script src="/javascript/angular.min.js"></script>
-  <script src="/javascript/consoleCar.js"></script>
+<script src="/javascript/angular.min.js"></script>
+<script src="/javascript/consoleCar.js"></script>
+
 </html>

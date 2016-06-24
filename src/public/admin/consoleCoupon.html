@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN" ng-app="app">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,369 +16,399 @@
     <link rel="stylesheet" href="/stylesheets/console.css">
     <link rel="stylesheet" href="/stylesheets/consoleCoupon.css">
 
-  </head>
+</head>
 
-  <body>
+<body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <span class="navbar-brand" style="color: white"> Jike 后台管理 </span>
-          <ul class="nav navbar-nav mynav">
-            <li><a href="/admin/consoleRoute.html">路线</a></li>
-            <li><a href="/admin/consoleUser.html">用户</a></li>
-            <li class="active"><a href="/admin/consoleCoupon.html">优惠券</a></li>
-            <li><a href="/admin/consoleCar.html">车辆</a></li>
-            <li><a href="/admin/consoleOrder.html">订单</a></li>
-            <li><a href="/admin/consoleLocation.html">地点</a></li>
-          </ul>
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <span class="navbar-brand" style="color: white"> InstCar 后台管理 </span>
+                <ul class="nav navbar-nav mynav">
+                    <li><a href="/admin/consoleRoute.html">路线</a></li>
+                    <li><a href="/admin/consoleUser.html">用户</a></li>
+                    <li class="active"><a href="/admin/consoleCoupon.html">优惠券</a></li>
+                    <li><a href="/admin/consoleCar.html">车辆</a></li>
+                    <li><a href="/admin/consoleOrder.html">订单</a></li>
+                    <li><a href="/admin/consoleLocation.html">地点</a></li>
+                </ul>
+            </div>
         </div>
-      </div>
     </nav>
 
     <div class="container-fluid">
-      <div class="row" ng-controller="PageController">
-        <div class="col-sm-3 col-md-2 sidebar">
-          <ul class="nav nav-sidebar">
-            <li ng-class="{'active': page.pageName=='DiscountRule'}">
-              <a href="##" ng-click="switchPage('DiscountRule')">优惠券优惠规则表</a>
-            </li>
-            <li ng-class="{'active': page.pageName=='UserDiscountCode'}">
-              <a href="##" ng-click="switchPage('UserDiscountCode')">用户优惠码优惠规则管理</a>
-            </li>
-            <li ng-class="{'active': page.pageName=='DistributeCoupon'}">
-              <a href="##" ng-click="switchPage('DistributeCoupon')">群发优惠券</a>
-            </li>
-            <li ng-class="{'active': page.pageName=='DonateCoupon'}">
-              <a href="##" ng-click="switchPage('DonateCoupon')">赠送优惠券</a>
-            </li>
-          </ul>
+        <div class="row" ng-controller="PageController">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li ng-class="{'active': page.pageName=='DiscountRule'}">
+                        <a href="##" ng-click="switchPage('DiscountRule')">优惠券优惠规则表</a>
+                    </li>
+                    <li ng-class="{'active': page.pageName=='UserDiscountCode'}">
+                        <a href="##" ng-click="switchPage('UserDiscountCode')">用户优惠码优惠规则管理</a>
+                    </li>
+                    <li ng-class="{'active': page.pageName=='DistributeCoupon'}">
+                        <a href="##" ng-click="switchPage('DistributeCoupon')">群发优惠券</a>
+                    </li>
+                    <li ng-class="{'active': page.pageName=='DonateCoupon'}">
+                        <a href="##" ng-click="switchPage('DonateCoupon')">赠送优惠券</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
 
 
 
-      <!-- view member discount code page -->
-      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="MemberCode">
-        <div ng-if="page.pageName=='MemberCode'">
-          <button type="button" class="btn btn-default switch" ng-class="{'active': pageType==0}" ng-click="switchPage(0)">查看优惠码</button>
-          <button type="button" class="btn btn-default switch" ng-class="{'active': pageType==1}" ng-click="switchPage(1)">增加优惠码</button>
-          <div class="table-responsive" ng-if="pageType==0">
-            <table class="table table-striped table-condensed table-bordered">
-              <thead>
-                <tr>
-                  <th>优惠码名称</th>
-                  <th>优惠码号码</th>
-                  <th>优惠码有效截止日</th>
-                  <th>优惠规则</th>
-                  <th>优惠券显示名称</th>
-                  <th>优惠券限制价格</th>
-                  <th>优惠券限制起点</th>
-                  <th>优惠券限制结束日期</th>
-                  <th>绑定数量</th>
-                  <th>操作</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr ng-repeat = 'item in discountCodes track by $index'>
-                  <td><input class="sInput" ng-model="item.name" type="text" disabled></td>
-                  <td><input class="sInput" ng-model="item.code" type="text" disabled></td>
-                  <td><input class="sInput" ng-model="item.validDate" type="datetime-local"></td>
-                  <td><input class="sInput" ng-model="item.discountRule.description" ng-disabled="rightBarType==3&&indexChecked==$index" ng-click="showDiscountRule(3, $index)"></td>
-                  <td><input class="sInput" ng-model="item.show" type="text"></td>
-                  <td><input class="sInput" ng-model="item.couponValidPrice" type="number"></td>
-                  <td><input class="sInput" ng-model="item.couponValidSrc.name" ng-disabled="rightBarType==4&&indexChecked==$index" ng-click="showLocation(4, $index)"></td>
-                  <td><input class="sInput" ng-model="item.couponValidEndTime" type="datetime-local"></td>
-                  <td><input class="sInput" ng-model="item.curNumber" type="number" disabled></td>
-                  <td>
-                    <div class="btn-group" role="group">
-                      <button type="button" class="btn btn-default" ng-click="saveDiscountCode($index)">保存</button>
+        <!-- view member discount code page -->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="MemberCode">
+            <div ng-if="page.pageName=='MemberCode'">
+                <button type="button" class="btn btn-default switch" ng-class="{'active': pageType==0}" ng-click="switchPage(0)">查看优惠码</button>
+                <button type="button" class="btn btn-default switch" ng-class="{'active': pageType==1}" ng-click="switchPage(1)">增加优惠码</button>
+                <div class="table-responsive" ng-if="pageType==0">
+                    <table class="table table-striped table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th>优惠码名称</th>
+                                <th>优惠码号码</th>
+                                <th>优惠码有效截止日</th>
+                                <th>优惠规则</th>
+                                <th>优惠券显示名称</th>
+                                <th>优惠券限制价格</th>
+                                <th>优惠券限制起点</th>
+                                <th>优惠券限制结束日期</th>
+                                <th>绑定数量</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat='item in discountCodes track by $index'>
+                                <td>
+                                    <input class="sInput" ng-model="item.name" type="text" disabled>
+                                </td>
+                                <td>
+                                    <input class="sInput" ng-model="item.code" type="text" disabled>
+                                </td>
+                                <td>
+                                    <input class="sInput" ng-model="item.validDate" type="datetime-local">
+                                </td>
+                                <td>
+                                    <input class="sInput" ng-model="item.discountRule.description" ng-disabled="rightBarType==3&&indexChecked==$index" ng-click="showDiscountRule(3, $index)">
+                                </td>
+                                <td>
+                                    <input class="sInput" ng-model="item.show" type="text">
+                                </td>
+                                <td>
+                                    <input class="sInput" ng-model="item.couponValidPrice" type="number">
+                                </td>
+                                <td>
+                                    <input class="sInput" ng-model="item.couponValidSrc.name" ng-disabled="rightBarType==4&&indexChecked==$index" ng-click="showLocation(4, $index)">
+                                </td>
+                                <td>
+                                    <input class="sInput" ng-model="item.couponValidEndTime" type="datetime-local">
+                                </td>
+                                <td>
+                                    <input class="sInput" ng-model="item.curNumber" type="number" disabled>
+                                </td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-default" ng-click="saveDiscountCode($index)">保存</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- end of table -->
+                <div ng-if="pageType==1">
+                    <p>
+                        <span class="tip">优惠码名称：</span>
+                        <input ng-model="discountCode.name" type="text">
+                    </p>
+                    <p>
+                        <span class="tip">优惠券显示名称：</span>
+                        <input ng-model="discountCode.show" type="text">
+                    </p>
+                    <p>
+                        <span class="tip">优惠码号码（6位小写英文和数字）：</span>
+                        <input ng-model="discountCode.code" type="text">
+                    </p>
+                    <p class="input-group">
+                        <span class="tip">优惠码有效截止日期：</span>
+                        <input class="inputTime" datetime-picker is-open="iTime.time0" ng-click="showTime('time0')" ng-model="discountCode.validDate" ng-change="checkek()">
+                    </p>
+                    <p>
+                        <span class="tip">优惠规则：</span>
+                        <input class="mouseOver" ng-click="showDiscountRule(1)" ng-disabled="rightBarType==1" ng-model="discountCode.discountRule.description">
+                    </p>
+                    <p>
+                        <span class="tip">优惠券限制价格（和选择的具体优惠规则有关，无门槛则为0）：</span>
+                        <input class="mouseOver" ng-model="discountCode.couponValidPrice" type="number">
+                    </p>
+                    <p>
+                        <span class="tip">优惠券限制起点：</span>
+                        <input class="mouseOver" ng-click="showLocation(2)" ng-disabled="rightBarType==2" ng-model="discountCode.couponValidSrc.name">
+                    </p>
+                    <p class="input-group">
+                        <span class="tip">优惠券限制日期：</span>
+                        <input class="inputTime" datetime-picker is-open="iTime.time1" ng-click="showTime('time1')" ng-model="discountCode.couponValidStartTime" ng-change="checkek()"> ->
+                        <input class="inputTime" datetime-picker is-open="iTime.time2" ng-click="showTime('time2')" ng-model="discountCode.couponValidEndTime" ng-change="checkek()">
+                    </p>
+                    <button type="button" class="btn btn-primary" ng-click="add()">提交</button>
+                </div>
+                <!-- end of add discount code -->
+
+                <!-- panel for items -->
+                <div class="panel panel-primary rightBar" ng-if="rightBarType!=0">
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-remove mouseOver" ng-click="hideRightBar()"></span> {{rightBarHead}}
                     </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div> <!-- end of table -->
-          <div ng-if="pageType==1">
-            <p>
-              <span class="tip">优惠码名称：</span>
-              <input ng-model="discountCode.name" type="text">
-            </p>
-            <p>
-              <span class="tip">优惠券显示名称：</span>
-              <input ng-model="discountCode.show" type="text">
-            </p>
-            <p>
-              <span class="tip">优惠码号码（6位小写英文和数字）：</span>
-              <input ng-model="discountCode.code" type="text">
-            </p>
-            <p class="input-group">
-              <span class="tip">优惠码有效截止日期：</span>
-              <input class="inputTime" datetime-picker is-open="iTime.time0" ng-click="showTime('time0')" ng-model="discountCode.validDate" ng-change="checkek()">
-            </p>
-            <p>
-              <span class="tip">优惠规则：</span>
-              <input class="mouseOver" ng-click="showDiscountRule(1)" ng-disabled="rightBarType==1" ng-model="discountCode.discountRule.description">
-            </p>
-            <p>
-              <span class="tip">优惠券限制价格（和选择的具体优惠规则有关，无门槛则为0）：</span>
-              <input class="mouseOver" ng-model="discountCode.couponValidPrice" type="number">
-            </p>
-            <p>
-              <span class="tip">优惠券限制起点：</span>
-              <input class="mouseOver" ng-click="showLocation(2)" ng-disabled="rightBarType==2" ng-model="discountCode.couponValidSrc.name">
-            </p>
-            <p class="input-group">
-              <span class="tip">优惠券限制日期：</span>
-              <input class="inputTime" datetime-picker is-open="iTime.time1" ng-click="showTime('time1')" ng-model="discountCode.couponValidStartTime" ng-change="checkek()">
-              ->
-              <input class="inputTime" datetime-picker is-open="iTime.time2" ng-click="showTime('time2')" ng-model="discountCode.couponValidEndTime" ng-change="checkek()">
-            </p>
-            <button type="button" class="btn btn-primary" ng-click="add()">提交</button>
-          </div>  <!-- end of add discount code -->
+                    <div class="panel-body">
+                        <!-- for location -->
+                        <div ng-if="rightBarType==2 || rightBarType==4" class="radio" ng-repeat='item in rightBarItems track by $index'>
+                            <label>
+                                <input type="radio" value="{{item}}" ng-model="discountCodeInfo.location" name="radio"> {{item.name}}
+                            </label>
+                        </div>
+                        <!-- for discount rule -->
+                        <div ng-if="rightBarType==1 || rightBarType==3" class="radio" ng-repeat='item in rightBarItems track by $index'>
+                            <label>
+                                <input type="radio" value="{{item}}" ng-model="discountCodeInfo.discountRule" name="radio"> {{item.description}}
+                            </label>
+                        </div>
 
-          <!-- panel for items -->
-          <div class="panel panel-primary rightBar" ng-if="rightBarType!=0">
-            <div class="panel-heading">
-              <span class="glyphicon glyphicon-remove mouseOver" ng-click="hideRightBar()"></span>  {{rightBarHead}}
-            </div>
-            <div class="panel-body">
-              <!-- for location -->
-              <div ng-if="rightBarType==2 || rightBarType==4" class="radio" ng-repeat='item in rightBarItems track by $index'>
-                <label>
-                  <input type="radio" value="{{item}}" ng-model="discountCodeInfo.location" name="radio">
-                  {{item.name}}
-                </label>
-              </div>
-              <!-- for discount rule -->
-              <div ng-if="rightBarType==1 || rightBarType==3" class="radio" ng-repeat='item in rightBarItems track by $index'>
-                <label>
-                  <input type="radio" value="{{item}}" ng-model="discountCodeInfo.discountRule" name="radio">
-                  {{item.description}}
-                </label>
-              </div>
-
-            </div> <!-- end of panel body -->
-            <div class="panel-footer">
-              <button type="button" class="btn btn-default" ng-click="checked()">确定</button>
-            </div>
-          </div> <!-- end of right bar -->
-
-        </div>
-      </div> <!-- end of view member discount code page -->
-
-      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="DiscountRule">
-        <div ng-if="page.pageName=='DiscountRule'">
-          <button type="button" class="btn btn-default switch" ng-class="{'active': pageType==0}" ng-click="switchPage(0)">查看优惠券优惠规则</button>
-          <button type="button" class="btn btn-default switch" ng-class="{'active': pageType==1}" ng-click="switchPage(1)">增加优惠券优惠规则</button>
-          <div class="table-responsive" ng-if="pageType==0">
-            <table class="table table-striped table-condensed table-bordered">
-              <thead>
-                <tr>
-                  <th>优惠规则描述</th>
-                  <th>优惠规则函数</th>
-                  <th>操作</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr ng-repeat = 'item in discountRules track by $index'>
-                  <td>{{item.description}}</td>
-                  <td>{{item.mockFunction}}</td>
-                  <td>
-                    <div class="btn-group" role="group">
-                      <button type="button" class="btn btn-default" ng-click="delete($index)" disabled>删除</button>
                     </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>  <!-- end of table -->
-          <div ng-if="pageType==1">
-            <div class="form-group">
-              <label class="control-label">优惠规则描述：（将显示在优惠券内，例如：满100减10）</label>
-              <textarea class="form-control" rows="3" ng-model="discountRule.description"></textarea>
+                    <!-- end of panel body -->
+                    <div class="panel-footer">
+                        <button type="button" class="btn btn-default" ng-click="checked()">确定</button>
+                    </div>
+                </div>
+                <!-- end of right bar -->
+
             </div>
-            <div class="form-group">
-              <label class="control-label">优惠规则函数：（输入z关于x的函数）</label>
-              </br>
-              <label class="control-label">其中x表示订单金额，z表示最后需要付款金额</label>
-              <textarea class="form-control" rows="5" ng-model="discountRule.discountFunction" placeholder="z = x - 10"></textarea>
-              <div class="testDiscountRule">
-                <label class="control-label">请先测试以后再提交</label>
-                </br>
-                订单金额：<input type="number" ng-model="discountRule.inputPrice">
-                <button ng-click="getTestResult()">确定</button>
-                </br>
-                <span>结果是：{{discountRule.result}}</span>
-              </div>
-            </div>
-            <button type="button" class="btn btn-primary" ng-click="add()">提交</button>
-          </div> <!-- end of add discount rule -->
         </div>
-      </div> <!-- end of vide discount rule page -->
+        <!-- end of view member discount code page -->
 
-      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="UserDiscountCode">
-        <div ng-if="page.pageName=='UserDiscountCode'">
-         <p>
-           <span class="tip">优惠券名称：</span>
-           <input class="mouseOver" ng-model="userDiscountRuleMap.show" type="text">
-         </p>
-         <p>
-           <span class="tip">限定优惠券使用门槛价格(元）：</span>
-           <input class="mouseOver" ng-model="userDiscountRuleMap.validPrice" type="number">
-         </p>
-         <p>
-           <span class="tip">限定优惠券使用有效期（天）：</span>
-           <input class="mouseOver" ng-model="userDiscountRuleMap.validTime" type="number">
-         </p>
-         <p>
-           <span class="tip">对应优惠券优惠规则：</span>
-           <input class="mouseOver" ng-click="showDiscountRule()" ng-disabled="rightBarType==1" ng-model="userDiscountRuleMap.discountRule.description">
-         </p>
-         <button type="button" class="btn btn-primary" ng-click="save()">保存</button>
-
-         <!-- panel for items -->
-          <div class="panel panel-primary rightBar" ng-if="rightBarType!=0">
-            <div class="panel-heading">
-              <span class="glyphicon glyphicon-remove mouseOver" ng-click="hideRightBar()"></span>  {{rightBarHead}}
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="DiscountRule">
+            <div ng-if="page.pageName=='DiscountRule'">
+                <button type="button" class="btn btn-default switch" ng-class="{'active': pageType==0}" ng-click="switchPage(0)">查看优惠券优惠规则</button>
+                <button type="button" class="btn btn-default switch" ng-class="{'active': pageType==1}" ng-click="switchPage(1)">增加优惠券优惠规则</button>
+                <div class="table-responsive" ng-if="pageType==0">
+                    <table class="table table-striped table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th>优惠规则描述</th>
+                                <th>优惠规则函数</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat='item in discountRules track by $index'>
+                                <td>{{item.description}}</td>
+                                <td>{{item.mockFunction}}</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-default" ng-click="delete($index)" disabled>删除</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- end of table -->
+                <div ng-if="pageType==1">
+                    <div class="form-group">
+                        <label class="control-label">优惠规则描述：（将显示在优惠券内，例如：满100减10）</label>
+                        <textarea class="form-control" rows="3" ng-model="discountRule.description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">优惠规则函数：（输入z关于x的函数）</label>
+                        </br>
+                        <label class="control-label">其中x表示订单金额，z表示最后需要付款金额</label>
+                        <textarea class="form-control" rows="5" ng-model="discountRule.discountFunction" placeholder="z = x - 10"></textarea>
+                        <div class="testDiscountRule">
+                            <label class="control-label">请先测试以后再提交</label>
+                            </br>
+                            订单金额：
+                            <input type="number" ng-model="discountRule.inputPrice">
+                            <button ng-click="getTestResult()">确定</button>
+                            </br>
+                            <span>结果是：{{discountRule.result}}</span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary" ng-click="add()">提交</button>
+                </div>
+                <!-- end of add discount rule -->
             </div>
-            <div class="panel-body">
-              <!-- for discount rule -->
-              <div ng-if="rightBarType==1" class="radio" ng-repeat='item in rightBarItems track by $index'>
-                <label>
-                  <input type="radio" value="{{item}}" ng-model="userDiscountRuleMapInfo.discountRule" name="radio">
-                  {{item.description}}
-                </label>
-              </div>
-
-            </div> <!-- end of panel body -->
-            <div class="panel-footer">
-              <button type="button" class="btn btn-default" ng-click="checked()">确定</button>
-            </div>
-          </div> <!-- end of right bar -->
         </div>
-      </div>
+        <!-- end of vide discount rule page -->
 
-      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="DistributeCoupon">
-        <div ng-if="page.pageName=='DistributeCoupon'">
-          <p>
-            <span class="tip">优惠券显示名称(将显示在优惠券上）：</span>
-            <input class="mouseOver" ng-model="coupon.show" type="text">
-          </p>
-          <p>
-            <span class="tip">优惠规则：</span>
-            <input class="mouseOver" ng-model="coupon.discountRule.description" type="text" ng-click="showDiscountRule(1)">
-          </p>
-          <p>
-            <span class="tip">限制出发地：</span>
-            <input class="mouseOver" ng-model="coupon.validSrc.name" type="text" ng-click="showLocation(2)">
-          </p>
-          <p>
-            <span class="tip">限制目的地：</span>
-            <input class="mouseOver" ng-model="coupon.validDest.name" type="text" ng-click="showLocation(3)">
-          </p>
-          <p>
-            <span class="tip">限制价格门槛（元）：</span>
-            <input class="mouseOver" ng-model="coupon.validPrice" type="number">
-          </p>
-          <p class="input-group">
-            <span class="tip">限制有效期：</span>
-            <input class="inputTime" datetime-picker is-open="iTime.time0" ng-click="showTime('time0')" ng-model="coupon.validEndTime" ng-change="checkek()">
-          </p>
-          <button type="button" class="btn btn-primary" ng-click="add()">发放（所有用户均会获得优惠券）</button>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="UserDiscountCode">
+            <div ng-if="page.pageName=='UserDiscountCode'">
+                <p>
+                    <span class="tip">优惠券名称：</span>
+                    <input class="mouseOver" ng-model="userDiscountRuleMap.show" type="text">
+                </p>
+                <p>
+                    <span class="tip">限定优惠券使用门槛价格(元）：</span>
+                    <input class="mouseOver" ng-model="userDiscountRuleMap.validPrice" type="number">
+                </p>
+                <p>
+                    <span class="tip">限定优惠券使用有效期（天）：</span>
+                    <input class="mouseOver" ng-model="userDiscountRuleMap.validTime" type="number">
+                </p>
+                <p>
+                    <span class="tip">对应优惠券优惠规则：</span>
+                    <input class="mouseOver" ng-click="showDiscountRule()" ng-disabled="rightBarType==1" ng-model="userDiscountRuleMap.discountRule.description">
+                </p>
+                <button type="button" class="btn btn-primary" ng-click="save()">保存</button>
 
-          <!-- panel for items -->
-          <div class="panel panel-primary rightBar" ng-if="rightBarType!=0">
-            <div class="panel-heading">
-              <span class="glyphicon glyphicon-remove mouseOver" ng-click="hideRightBar()"></span>  {{rightBarHead}}
+                <!-- panel for items -->
+                <div class="panel panel-primary rightBar" ng-if="rightBarType!=0">
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-remove mouseOver" ng-click="hideRightBar()"></span> {{rightBarHead}}
+                    </div>
+                    <div class="panel-body">
+                        <!-- for discount rule -->
+                        <div ng-if="rightBarType==1" class="radio" ng-repeat='item in rightBarItems track by $index'>
+                            <label>
+                                <input type="radio" value="{{item}}" ng-model="userDiscountRuleMapInfo.discountRule" name="radio"> {{item.description}}
+                            </label>
+                        </div>
+
+                    </div>
+                    <!-- end of panel body -->
+                    <div class="panel-footer">
+                        <button type="button" class="btn btn-default" ng-click="checked()">确定</button>
+                    </div>
+                </div>
+                <!-- end of right bar -->
             </div>
-            <div class="panel-body">
-              <!-- for discount rule -->
-              <div ng-if="rightBarType==1" class="radio" ng-repeat='item in rightBarItems track by $index'>
-                <label>
-                  <input type="radio" value="{{item}}" ng-model="couponInfo.discountRule" name="radio">
-                  {{item.description}}
-                </label>
-              </div>
-              <!-- for location -->
-              <div ng-if="rightBarType==2 || rightBarType==3" class="radio" ng-repeat='item in rightBarItems track by $index'>
-                <label>
-                  <input type="radio" value="{{item}}" ng-model="couponInfo.location" name="radio">
-                  {{item.name}}
-                </label>
-              </div>
-            </div> <!-- end of panel body -->
-
-            <div class="panel-footer">
-              <button type="button" class="btn btn-default" ng-click="checked()">确定</button>
-            </div>
-          </div> <!-- end of right bar -->
-
         </div>
-      </div>
 
-      <!-- pay order page -->
-      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="DonateCoupon">
-        <div ng-if="page.pageName=='DonateCoupon'">
-          <div>
-            <p class="tip">手机号：</p>
-            <div class="phoneGroup">
-              <span ng-repeat="item in users track by $index">{{item.phone}};</span>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="DistributeCoupon">
+            <div ng-if="page.pageName=='DistributeCoupon'">
+                <p>
+                    <span class="tip">优惠券显示名称(将显示在优惠券上）：</span>
+                    <input class="mouseOver" ng-model="coupon.show" type="text">
+                </p>
+                <p>
+                    <span class="tip">优惠规则：</span>
+                    <input class="mouseOver" ng-model="coupon.discountRule.description" type="text" ng-click="showDiscountRule(1)">
+                </p>
+                <p>
+                    <span class="tip">限制出发地：</span>
+                    <input class="mouseOver" ng-model="coupon.validSrc.name" type="text" ng-click="showLocation(2)">
+                </p>
+                <p>
+                    <span class="tip">限制目的地：</span>
+                    <input class="mouseOver" ng-model="coupon.validDest.name" type="text" ng-click="showLocation(3)">
+                </p>
+                <p>
+                    <span class="tip">限制价格门槛（元）：</span>
+                    <input class="mouseOver" ng-model="coupon.validPrice" type="number">
+                </p>
+                <p class="input-group">
+                    <span class="tip">限制有效期：</span>
+                    <input class="inputTime" datetime-picker is-open="iTime.time0" ng-click="showTime('time0')" ng-model="coupon.validEndTime" ng-change="checkek()">
+                </p>
+                <button type="button" class="btn btn-primary" ng-click="add()">发放（所有用户均会获得优惠券）</button>
+
+                <!-- panel for items -->
+                <div class="panel panel-primary rightBar" ng-if="rightBarType!=0">
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-remove mouseOver" ng-click="hideRightBar()"></span> {{rightBarHead}}
+                    </div>
+                    <div class="panel-body">
+                        <!-- for discount rule -->
+                        <div ng-if="rightBarType==1" class="radio" ng-repeat='item in rightBarItems track by $index'>
+                            <label>
+                                <input type="radio" value="{{item}}" ng-model="couponInfo.discountRule" name="radio"> {{item.description}}
+                            </label>
+                        </div>
+                        <!-- for location -->
+                        <div ng-if="rightBarType==2 || rightBarType==3" class="radio" ng-repeat='item in rightBarItems track by $index'>
+                            <label>
+                                <input type="radio" value="{{item}}" ng-model="couponInfo.location" name="radio"> {{item.name}}
+                            </label>
+                        </div>
+                    </div>
+                    <!-- end of panel body -->
+
+                    <div class="panel-footer">
+                        <button type="button" class="btn btn-default" ng-click="checked()">确定</button>
+                    </div>
+                </div>
+                <!-- end of right bar -->
+
             </div>
-            <p>
-              <span class="tip">优惠券显示名称(将显示在优惠券上）：</span>
-              <input class="mouseOver" ng-model="coupon.show" type="text">
-            </p>
-            <p>
-             <span class="tip">优惠规则（不要选择有使用门槛的优惠券）：</span>
-             <input class="mouseOver" ng-model="coupon.discountRule.description" type="text" ng-click="showDiscountRule(1)">
-            </p>
-            <button type="button" class="btn btn-primary" ng-click="donateCoupon()">确认发放优惠券（双击）</button>
-          </div>
-
-          <div class="form-group inputPhone">
-            <label class="control-label">需要赠送用户的手机号：</label>
-            <input type="text" class="form-control inputPhone" ng-model="user.phone" ng-change="userPhoneChange()"></input>
-          </div>
-
-          <button type="button" class="btn btn-primary" ng-click="search()">搜索</button>
-          <p><span class="error" ng-if="err==1">{{errorInfo}}</span></p>
-          <div ng-if="step==1">
-            <p><span class="tip">用户名：</span>{{user.name}}<p>
-            <p><span class="tip">手机号：</span>{{user.phone}}<p>
-            </br>
-            <button type="button" class="btn btn-primary" ng-click="addPhone()">确认信息无误，点击添加</button>
-          </div>
-
-
-          <!-- panel for items -->
-          <div class="panel panel-primary rightBar" ng-if="rightBarType!=0">
-            <div class="panel-heading">
-              <span class="glyphicon glyphicon-remove mouseOver" ng-click="hideRightBar()"></span>  {{rightBarHead}}
-            </div>
-            <div class="panel-body">
-              <!-- for discount rule -->
-              <div ng-if="rightBarType==1" class="radio" ng-repeat='item in rightBarItems track by $index'>
-                <label>
-                  <input type="radio" value="{{item}}" ng-model="couponInfo.discountRule" name="radio">
-                  {{item.description}}
-                </label>
-              </div>
-            </div> <!-- end of panel body -->
-
-            <div class="panel-footer">
-              <button type="button" class="btn btn-default" ng-click="checked()">确定</button>
-            </div>
-          </div> <!-- end of right bar -->
-
         </div>
-      </div> <!-- end of pay order page -->
+
+        <!-- pay order page -->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="DonateCoupon">
+            <div ng-if="page.pageName=='DonateCoupon'">
+                <div>
+                    <p class="tip">手机号：</p>
+                    <div class="phoneGroup">
+                        <span ng-repeat="item in users track by $index">{{item.phone}};</span>
+                    </div>
+                    <p>
+                        <span class="tip">优惠券显示名称(将显示在优惠券上）：</span>
+                        <input class="mouseOver" ng-model="coupon.show" type="text">
+                    </p>
+                    <p>
+                        <span class="tip">优惠规则（不要选择有使用门槛的优惠券）：</span>
+                        <input class="mouseOver" ng-model="coupon.discountRule.description" type="text" ng-click="showDiscountRule(1)">
+                    </p>
+                    <button type="button" class="btn btn-primary" ng-click="donateCoupon()">确认发放优惠券（双击）</button>
+                </div>
+
+                <div class="form-group inputPhone">
+                    <label class="control-label">需要赠送用户的手机号：</label>
+                    <input type="text" class="form-control inputPhone" ng-model="user.phone" ng-change="userPhoneChange()"></input>
+                </div>
+
+                <button type="button" class="btn btn-primary" ng-click="search()">搜索</button>
+                <p><span class="error" ng-if="err==1">{{errorInfo}}</span></p>
+                <div ng-if="step==1">
+                    <p><span class="tip">用户名：</span>{{user.name}}
+                        <p>
+                            <p><span class="tip">手机号：</span>{{user.phone}}
+                                <p>
+                                    </br>
+                                    <button type="button" class="btn btn-primary" ng-click="addPhone()">确认信息无误，点击添加</button>
+                </div>
+
+
+                <!-- panel for items -->
+                <div class="panel panel-primary rightBar" ng-if="rightBarType!=0">
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-remove mouseOver" ng-click="hideRightBar()"></span> {{rightBarHead}}
+                    </div>
+                    <div class="panel-body">
+                        <!-- for discount rule -->
+                        <div ng-if="rightBarType==1" class="radio" ng-repeat='item in rightBarItems track by $index'>
+                            <label>
+                                <input type="radio" value="{{item}}" ng-model="couponInfo.discountRule" name="radio"> {{item.description}}
+                            </label>
+                        </div>
+                    </div>
+                    <!-- end of panel body -->
+
+                    <div class="panel-footer">
+                        <button type="button" class="btn btn-default" ng-click="checked()">确定</button>
+                    </div>
+                </div>
+                <!-- end of right bar -->
+
+            </div>
+        </div>
+        <!-- end of pay order page -->
 
     </div>
-  </body>
+</body>
 
 
-  <script src="/javascript/angular.min.js"></script>
-  <script src="/javascript/ui-bootstrap-tpls-0.13.4.min.js"></script>
-  <script src="/javascript/datetime-picker.js"></script>
-  <script src="/javascript/consoleCoupon.js"></script>
+<script src="/javascript/angular.min.js"></script>
+<script src="/javascript/ui-bootstrap-tpls-0.13.4.min.js"></script>
+<script src="/javascript/datetime-picker.js"></script>
+<script src="/javascript/consoleCoupon.js"></script>
+
 </html>

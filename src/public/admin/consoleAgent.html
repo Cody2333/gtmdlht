@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN" ng-app="app">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,346 +16,370 @@
     <link rel="stylesheet" href="/stylesheets/console.css">
     <link rel="stylesheet" href="/stylesheets/consoleAgent.css">
 
-  </head>
+</head>
 
-  <body>
+<body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <span class="navbar-brand" style="color: white"> Jike 后台管理 </span>
-          <ul class="nav navbar-nav mynav">
-            <li><a href="/admin/consoleRoute.html">路线</a></li>
-            <li><a href="/admin/consoleUser.html">用户</a></li>
-            <li><a href="/admin/consoleCoupon.html">优惠券</a></li>
-            <li><a href="/admin/consoleCar.html">车辆</a></li>
-            <li><a href="/admin/consoleOrder.html">订单</a></li>
-            <li><a href="/admin/consoleLocation.html">地点</a></li>
-          </ul>
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <span class="navbar-brand" style="color: white"> InstCar 后台管理 </span>
+                <ul class="nav navbar-nav mynav">
+                    <li><a href="/admin/consoleRoute.html">路线</a></li>
+                    <li><a href="/admin/consoleUser.html">用户</a></li>
+                    <li><a href="/admin/consoleCoupon.html">优惠券</a></li>
+                    <li><a href="/admin/consoleCar.html">车辆</a></li>
+                    <li><a href="/admin/consoleOrder.html">订单</a></li>
+                    <li><a href="/admin/consoleLocation.html">地点</a></li>
+                </ul>
+            </div>
         </div>
-      </div>
     </nav>
 
     <div class="container-fluid">
-      <div class="row" ng-controller="PageController">
-        <div class="col-sm-3 col-md-2 sidebar">
-          <ul class="nav nav-sidebar">
-            <li ng-class="{'active': page.pageName=='ViewAgent'}">
-              <a href="##" ng-click="switchPage('ViewAgent')">查看代理</a>
-            </li>
-            <li ng-class="{'active': page.pageName=='AddAgent'}">
-              <a href="##" ng-click="switchPage('AddAgent')">添加代理</a>
-            </li>
-            <li ng-class="{'active': page.pageName=='AgentCommission'}">
-              <a href="##" ng-click="switchPage('AgentCommission')">代理提成规则表</a>
-            </li>
-            <li ng-class="{'active': page.pageName=='AgentCommissionMap'}">
-              <a href="##" ng-click="switchPage('AgentCommissionMap')">代理提成规则映射表</a>
-            </li>
-            <li ng-class="{'active': page.pageName=='DiscountRuleMap'}">
-              <a href="##" ng-click="switchPage('DiscountRuleMap')">代理优惠券规则映射表</a>
-            </li>
-          </ul>
+        <div class="row" ng-controller="PageController">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li ng-class="{'active': page.pageName=='ViewAgent'}">
+                        <a href="##" ng-click="switchPage('ViewAgent')">查看代理</a>
+                    </li>
+                    <li ng-class="{'active': page.pageName=='AddAgent'}">
+                        <a href="##" ng-click="switchPage('AddAgent')">添加代理</a>
+                    </li>
+                    <li ng-class="{'active': page.pageName=='AgentCommission'}">
+                        <a href="##" ng-click="switchPage('AgentCommission')">代理提成规则表</a>
+                    </li>
+                    <li ng-class="{'active': page.pageName=='AgentCommissionMap'}">
+                        <a href="##" ng-click="switchPage('AgentCommissionMap')">代理提成规则映射表</a>
+                    </li>
+                    <li ng-class="{'active': page.pageName=='DiscountRuleMap'}">
+                        <a href="##" ng-click="switchPage('DiscountRuleMap')">代理优惠券规则映射表</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
 
 
 
-      <!-- view agent page -->
-      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="ViewAgent">
-        <div ng-if="page.pageName=='ViewAgent'">
+        <!-- view agent page -->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="ViewAgent">
+            <div ng-if="page.pageName=='ViewAgent'">
 
-          <div class="table-responsive">
-            <table class="table table-striped table-condensed table-bordered">
-              <thead>
-                <tr>
-                  <th>用户名</th>
-                  <th>手机号</th>
-                  <th>身份证</th>
-                  <th>活跃用户数</th>
-                  <th>操作</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr ng-repeat = 'item in agents track by $index'>
-                  <td>{{item.name}}</td>
-                  <td>{{item.phone}}</td>
-                  <td>{{item.idnum}}</td>
-                  <td>{{item.agentInfo.liveConsumer}}</td>
-                  <td>
-                    <div class="btn-group" role="group">
-                      <button type="button" class="btn btn-default" ng-click="viewAgentDetail($index)">查看具体信息</button>
+                <div class="table-responsive">
+                    <table class="table table-striped table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th>用户名</th>
+                                <th>手机号</th>
+                                <th>身份证</th>
+                                <th>活跃用户数</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat='item in agents track by $index'>
+                                <td>{{item.name}}</td>
+                                <td>{{item.phone}}</td>
+                                <td>{{item.idnum}}</td>
+                                <td>{{item.agentInfo.liveConsumer}}</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-default" ng-click="viewAgentDetail($index)">查看具体信息</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- end of view agent page -->
+
+        <!-- add agent page -->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="AddAgent">
+            <div ng-if="page.pageName=='AddAgent'">
+                <div class="form-group">
+                    <label class="control-label">需要添加的代理的手机号：</label>
+                    <input type="text" class="form-control inputPhone" ng-model="agent.phone" ng-change="phoneChange()"></input>
+                </div>
+                <button type="button" class="btn btn-primary" ng-click="search()">搜索</button>
+                <p><span class="error" ng-if="err==1">{{errorInfo}}</span></p>
+                <div ng-if="step==1">
+                    <p><span class="tip">姓名：</span>{{agent.name}}
+                        <p>
+                            <p><span class="tip">手机号：</span>{{agent.phone}}
+                                <p>
+                                    <p><span class="tip">身份证：</span>{{agent.idnum}}
+                                        <p>
+                                            <p>
+                                                <span class="tip">代理所属区域（将影响其提成）：</span>
+                                                <input class="mouseOver" ng-click="showLocation()" ng-disabled="rightBarType==1" ng-model=agent.src.name>
+                                                <!-- <span class="mouseOver" ng-click="showLocation()">{{agent.src.name}}</span> -->
+                                            </p>
+                                            <button type="button" class="btn btn-primary" ng-click="setToAgent()">设为代理</button>
+                </div>
+
+                <!-- panel for items -->
+                <div class="panel panel-primary rightBar" ng-if="rightBarType!=0">
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-remove mouseOver" ng-click="hideRightBar()"></span> {{rightBarHead}}
                     </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div> <!-- end of view agent page -->
+                    <div class="panel-body">
+                        <!-- for location -->
+                        <div ng-if="rightBarType==1" class="radio" ng-repeat='item in rightBarItems track by $index'>
+                            <label>
+                                <input type="radio" value="{{item}}" ng-model="agentInfo.src" name="radio"> {{item.name}}
+                            </label>
+                        </div>
 
-      <!-- add agent page -->
-      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="AddAgent">
-        <div ng-if="page.pageName=='AddAgent'">
-          <div class="form-group">
-            <label class="control-label">需要添加的代理的手机号：</label>
-            <input type="text" class="form-control inputPhone" ng-model="agent.phone" ng-change="phoneChange()"></input>
-          </div>
-          <button type="button" class="btn btn-primary" ng-click="search()">搜索</button>
-          <p><span class="error" ng-if="err==1">{{errorInfo}}</span></p>
-          <div ng-if="step==1">
-            <p><span class="tip">姓名：</span>{{agent.name}}<p>
-            <p><span class="tip">手机号：</span>{{agent.phone}}<p>
-            <p><span class="tip">身份证：</span>{{agent.idnum}}<p>
-            <p>
-              <span class="tip">代理所属区域（将影响其提成）：</span>
-              <input class="mouseOver" ng-click="showLocation()" ng-disabled="rightBarType==1" ng-model=agent.src.name>
-              <!-- <span class="mouseOver" ng-click="showLocation()">{{agent.src.name}}</span> -->
-            </p>
-            <button type="button" class="btn btn-primary" ng-click="setToAgent()">设为代理</button>
-          </div>
-
-          <!-- panel for items -->
-          <div class="panel panel-primary rightBar" ng-if="rightBarType!=0">
-            <div class="panel-heading">
-              <span class="glyphicon glyphicon-remove mouseOver" ng-click="hideRightBar()"></span>  {{rightBarHead}}
-            </div>
-            <div class="panel-body">
-              <!-- for location -->
-              <div ng-if="rightBarType==1" class="radio" ng-repeat='item in rightBarItems track by $index'>
-                <label>
-                  <input type="radio" value="{{item}}" ng-model="agentInfo.src" name="radio">
-                  {{item.name}}
-                </label>
-              </div>
-
-            </div> <!-- end of panel body -->
-            <div class="panel-footer">
-              <button type="button" class="btn btn-default" ng-click="checked($index)">确定</button>
-            </div>
-          </div> <!-- end of right bar -->
-        </div>
-      </div>
-
-      <!-- agent commission -->
-      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="AgentCommission">
-        <div ng-if="page.pageName=='AgentCommission'">
-          <button type="button" class="btn btn-default switch" ng-class="{'active': pageType==0}" ng-click="switchPage(0)">查看规则</button>
-          <button type="button" class="btn btn-default switch" ng-class="{'active': pageType==1}" ng-click="switchPage(1)">增加规则</button>
-          <div class="table-responsive" ng-if="pageType==0">
-            <table class="table table-striped table-condensed table-bordered">
-              <thead>
-                <tr>
-                  <th>规则描述</th>
-                  <th>规则函数</th>
-                  <th>操作</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr ng-repeat = "item in agentCommissionRules">
-                  <td>{{item.description}}</td>
-                  <td>{{item.mockCommissionFunction}}</td>
-                  <td>
-                    <div class="btn-group" role="group">
-                      <button type="button" class="btn btn-default" ng-click="delete($index)">删除</button>
                     </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div> <!-- end of table -->
-          <div ng-if="pageType==1">
-            <div class="form-group">
-              <label class="control-label">提成规则描述：</label>
-              <textarea class="form-control" rows="3" ng-model="agentCommission.description"></textarea>
-            </div>
-            <div class="form-group">
-              <label class="control-label">提成规则函数：（输入z关于x,y的函数）</label>
-              </br>
-              <label class="control-label">其中x表示订单金额，y表示绑定该代理的用户前一个月的订单总数,z表示代理提成金额</label>
-              <textarea class="form-control" rows="5" ng-model="agentCommission.commissionFunction" placeholder="z = x + y"></textarea>
-              <div class="testCommissionRule">
-                <label class="control-label">请先测试以后再提交</label>
-                </br>
-                单笔订单金额：<input type="number" ng-model="agentCommission.inputPrice">
-                前一个月订单数：<input type="number" ng-model="agentCommission.inputPreliveConsumer">
-                <button ng-click="getTestResult()">确定</button>
-                </br>
-                <span>结果是：{{agentCommission.result}}</span>
-              </div>
-            </div>
-            <button type="button" class="btn btn-primary" ng-click="add()">提交</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- agent commission rule map -->
-      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="AgentCommissionMap">
-        <div ng-if="page.pageName=='AgentCommissionMap'">
-          <button type="button" class="btn btn-default switch" ng-class="{'active': pageType==0}" ng-click="switchPage(0)">查看规则映射</button>
-          <button type="button" class="btn btn-default switch" ng-class="{'active': pageType==1}" ng-click="switchPage(1)">增加规则映射</button>
-          <div class="table-responsive" ng-if="pageType==0">
-            <table class="table table-striped table-condensed table-bordered">
-              <thead>
-                <tr>
-                  <th>地点</th>
-                  <th>对应提成规则描述</th>
-                  <th>操作</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr ng-repeat = "item in agentCommissionRuleMaps">
-                  <td>{{item.src.name}}</td>
-                  <td><input ng-model="item.agentCommissionRule.description" class="sInput" ng-disabled="rightBarType==3" ng-click="showCommissionRule(3, $index)"></td>
-                  <td>
-                    <div class="btn-group" role="group">
-                      <button type="button" class="btn btn-default" ng-click="saveCommissionRuleMap($index)">保存</button>
+                    <!-- end of panel body -->
+                    <div class="panel-footer">
+                        <button type="button" class="btn btn-default" ng-click="checked($index)">确定</button>
                     </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div> <!-- end of table -->
-          <div ng-if="pageType==1">
-            <p>
-              <span class="tip">代理所属区域：</span>
-              <input class="mouseOver" ng-click="showLocation(1)" ng-disabled="rightBarType==1" ng-model="agentCommissionRuleMap.src.name">
-            </p>
-            <p>
-              <span class="tip">对应提成规则：</span>
-              <input class="mouseOver" ng-click="showCommissionRule(2)" ng-disabled="rightBarType==2" ng-model="agentCommissionRuleMap.agentCommissionRule.description">
-            </p>
-
-            <button type="button" class="btn btn-primary" ng-click="add()">增加</button>
-          </div> <!-- end of add rule map -->
-
-          <!-- panel for items -->
-          <div class="panel panel-primary rightBar" ng-if="rightBarType!=0">
-            <div class="panel-heading">
-              <span class="glyphicon glyphicon-remove mouseOver" ng-click="hideRightBar()"></span>  {{rightBarHead}}
+                </div>
+                <!-- end of right bar -->
             </div>
-            <div class="panel-body">
-              <!-- for location -->
-              <div ng-if="rightBarType==1" class="radio" ng-repeat='item in rightBarItems track by $index'>
-                <label>
-                  <input type="radio" value="{{item}}" ng-model="agentCommissionRuleMapInfo.src" name="radio">
-                  {{item.name}}
-                </label>
-              </div>
-              <!-- for agent commission rule -->
-              <div ng-if="rightBarType==2 || rightBarType==3" class="radio" ng-repeat='item in rightBarItems track by $index'>
-                <label>
-                  <input type="radio" value="{{item}}" ng-model="agentCommissionRuleMapInfo.agentCommissionRule" name="radio">
-                  {{item.description}}
-                </label>
-              </div>
-
-            </div> <!-- end of panel body -->
-            <div class="panel-footer">
-              <button type="button" class="btn btn-default" ng-click="checked()">确定</button>
-            </div>
-          </div> <!-- end of right bar -->
         </div>
-      </div> <!-- end of agent commission rule map -->
 
-      <!-- agent code discount rule map -->
-      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="DiscountRuleMap">
-        <div ng-if="page.pageName=='DiscountRuleMap'">
-          <button type="button" class="btn btn-default switch" ng-class="{'active': pageType==0}" ng-click="switchPage(0)">查看规则映射</button>
-          <button type="button" class="btn btn-default switch" ng-class="{'active': pageType==1}" ng-click="switchPage(1)">增加规则映射</button>
-          <div class="table-responsive" ng-if="pageType==0">
-            <table class="table table-striped table-condensed table-bordered">
-              <thead>
-                <tr>
-                  <th>代理所属区域</th>
-                  <th>优惠券显示名称</th>
-                  <th>限定起点</th>
-                  <th>限定价钱（元）</th>
-                  <th>限定时间（天）</th>
-                  <th>对应规则描述</th>
-                  <th>操作</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr ng-repeat = "item in discountRuleMaps">
-                  <td>{{item.src.name}}</td>
-                  <td><input ng-model="item.show" class="sInput" type="text"></td>
-                  <td><input ng-model="item.validSrc.name" class="sInput" ng-disabled="rightBarType==5 && indexChecked==$index" ng-click="showLocation(5, $index)"></td>
-                  <td><input ng-model="item.validPrice" class="sInput" type="number"></td>
-                  <td><input ng-model="item.validTime" class="sInput" type="number"></td>
-                  <td><input ng-model="item.discountRule.description" class="sInput" ng-disabled="rightBarType==4 && indexChecked==$index" ng-click="showDiscountRule(4, $index)"}}</td>
-                  <td>
-                    <div class="btn-group" role="group">
-                      <button type="button" class="btn btn-default" ng-click="saveDiscountRuleMap($index)">保存</button>
+        <!-- agent commission -->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="AgentCommission">
+            <div ng-if="page.pageName=='AgentCommission'">
+                <button type="button" class="btn btn-default switch" ng-class="{'active': pageType==0}" ng-click="switchPage(0)">查看规则</button>
+                <button type="button" class="btn btn-default switch" ng-class="{'active': pageType==1}" ng-click="switchPage(1)">增加规则</button>
+                <div class="table-responsive" ng-if="pageType==0">
+                    <table class="table table-striped table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th>规则描述</th>
+                                <th>规则函数</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in agentCommissionRules">
+                                <td>{{item.description}}</td>
+                                <td>{{item.mockCommissionFunction}}</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-default" ng-click="delete($index)">删除</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- end of table -->
+                <div ng-if="pageType==1">
+                    <div class="form-group">
+                        <label class="control-label">提成规则描述：</label>
+                        <textarea class="form-control" rows="3" ng-model="agentCommission.description"></textarea>
                     </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div> <!-- end of table -->
-          <div ng-if="pageType==1">
-            <p>
-              <span class="tip">代理所属区域：</span>
-              <input class="mouseOver" ng-click="showLocation(1)" ng-disabled="rightBarType==1" ng-model="discountRuleMap.src.name">
-            </p>
-            <p>
-              <span class="tip">优惠券显示名称：</span>
-              <input class="mouseOver" ng-model="discountRuleMap.show" type="text">
-            </p>
-            <p>
-              <span class="tip">限定优惠券使用起始地：</span>
-              <input class="mouseOver" ng-click="showLocation(3)" ng-disabled="rightBarType==3" ng-model="discountRuleMap.validSrc.name">
-            </p>
-            <p>
-              <span class="tip">限定优惠券使用门槛价格(元）：</span>
-              <input class="mouseOver" ng-model="discountRuleMap.validPrice" type="number">
-            </p>
-            <p>
-              <span class="tip">限定优惠券使用有效期（天）：</span>
-              <input class="mouseOver" ng-model="discountRuleMap.validTime" type="number">
-            </p>
-            <p>
-              <span class="tip">对应优惠券优惠规则：</span>
-              <input class="mouseOver" ng-click="showDiscountRule(2)" ng-disabled="rightBarType==2" ng-model="discountRuleMap.discountRule.description">
-            </p>
-
-            <button type="button" class="btn btn-primary" ng-click="add()">增加</button>
-          </div> <!-- end of add rule map -->
-
-          <!-- panel for items -->
-          <div class="panel panel-primary rightBar" ng-if="rightBarType!=0">
-            <div class="panel-heading">
-              <span class="glyphicon glyphicon-remove mouseOver" ng-click="hideRightBar()"></span>  {{rightBarHead}}
+                    <div class="form-group">
+                        <label class="control-label">提成规则函数：（输入z关于x,y的函数）</label>
+                        </br>
+                        <label class="control-label">其中x表示订单金额，y表示绑定该代理的用户前一个月的订单总数,z表示代理提成金额</label>
+                        <textarea class="form-control" rows="5" ng-model="agentCommission.commissionFunction" placeholder="z = x + y"></textarea>
+                        <div class="testCommissionRule">
+                            <label class="control-label">请先测试以后再提交</label>
+                            </br>
+                            单笔订单金额：
+                            <input type="number" ng-model="agentCommission.inputPrice"> 前一个月订单数：
+                            <input type="number" ng-model="agentCommission.inputPreliveConsumer">
+                            <button ng-click="getTestResult()">确定</button>
+                            </br>
+                            <span>结果是：{{agentCommission.result}}</span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary" ng-click="add()">提交</button>
+                </div>
             </div>
-            <div class="panel-body">
-              <!-- for location -->
-              <div ng-if="rightBarType==1 || rightBarType==3 || rightBarType==5" class="radio" ng-repeat='item in rightBarItems track by $index'>
-                <label>
-                  <input type="radio" value="{{item}}" ng-model="discountRuleMapInfo.src" name="radio">
-                  {{item.name}}
-                </label>
-              </div>
-              <!-- for agent commission rule -->
-              <div ng-if="rightBarType==2 || rightBarType==4" class="radio" ng-repeat='item in rightBarItems track by $index'>
-                <label>
-                  <input type="radio" value="{{item}}" ng-model="discountRuleMapInfo.discountRule" name="radio">
-                  {{item.description}}
-                </label>
-              </div>
-
-            </div> <!-- end of panel body -->
-            <div class="panel-footer">
-              <button type="button" class="btn btn-default" ng-click="checked()">确定</button>
-            </div>
-          </div> <!-- end of right bar -->
         </div>
-      </div> <!-- end of agent code discount rule map -->
+
+        <!-- agent commission rule map -->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="AgentCommissionMap">
+            <div ng-if="page.pageName=='AgentCommissionMap'">
+                <button type="button" class="btn btn-default switch" ng-class="{'active': pageType==0}" ng-click="switchPage(0)">查看规则映射</button>
+                <button type="button" class="btn btn-default switch" ng-class="{'active': pageType==1}" ng-click="switchPage(1)">增加规则映射</button>
+                <div class="table-responsive" ng-if="pageType==0">
+                    <table class="table table-striped table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th>地点</th>
+                                <th>对应提成规则描述</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in agentCommissionRuleMaps">
+                                <td>{{item.src.name}}</td>
+                                <td>
+                                    <input ng-model="item.agentCommissionRule.description" class="sInput" ng-disabled="rightBarType==3" ng-click="showCommissionRule(3, $index)">
+                                </td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-default" ng-click="saveCommissionRuleMap($index)">保存</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- end of table -->
+                <div ng-if="pageType==1">
+                    <p>
+                        <span class="tip">代理所属区域：</span>
+                        <input class="mouseOver" ng-click="showLocation(1)" ng-disabled="rightBarType==1" ng-model="agentCommissionRuleMap.src.name">
+                    </p>
+                    <p>
+                        <span class="tip">对应提成规则：</span>
+                        <input class="mouseOver" ng-click="showCommissionRule(2)" ng-disabled="rightBarType==2" ng-model="agentCommissionRuleMap.agentCommissionRule.description">
+                    </p>
+
+                    <button type="button" class="btn btn-primary" ng-click="add()">增加</button>
+                </div>
+                <!-- end of add rule map -->
+
+                <!-- panel for items -->
+                <div class="panel panel-primary rightBar" ng-if="rightBarType!=0">
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-remove mouseOver" ng-click="hideRightBar()"></span> {{rightBarHead}}
+                    </div>
+                    <div class="panel-body">
+                        <!-- for location -->
+                        <div ng-if="rightBarType==1" class="radio" ng-repeat='item in rightBarItems track by $index'>
+                            <label>
+                                <input type="radio" value="{{item}}" ng-model="agentCommissionRuleMapInfo.src" name="radio"> {{item.name}}
+                            </label>
+                        </div>
+                        <!-- for agent commission rule -->
+                        <div ng-if="rightBarType==2 || rightBarType==3" class="radio" ng-repeat='item in rightBarItems track by $index'>
+                            <label>
+                                <input type="radio" value="{{item}}" ng-model="agentCommissionRuleMapInfo.agentCommissionRule" name="radio"> {{item.description}}
+                            </label>
+                        </div>
+
+                    </div>
+                    <!-- end of panel body -->
+                    <div class="panel-footer">
+                        <button type="button" class="btn btn-default" ng-click="checked()">确定</button>
+                    </div>
+                </div>
+                <!-- end of right bar -->
+            </div>
+        </div>
+        <!-- end of agent commission rule map -->
+
+        <!-- agent code discount rule map -->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="DiscountRuleMap">
+            <div ng-if="page.pageName=='DiscountRuleMap'">
+                <button type="button" class="btn btn-default switch" ng-class="{'active': pageType==0}" ng-click="switchPage(0)">查看规则映射</button>
+                <button type="button" class="btn btn-default switch" ng-class="{'active': pageType==1}" ng-click="switchPage(1)">增加规则映射</button>
+                <div class="table-responsive" ng-if="pageType==0">
+                    <table class="table table-striped table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th>代理所属区域</th>
+                                <th>优惠券显示名称</th>
+                                <th>限定起点</th>
+                                <th>限定价钱（元）</th>
+                                <th>限定时间（天）</th>
+                                <th>对应规则描述</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in discountRuleMaps">
+                                <td>{{item.src.name}}</td>
+                                <td>
+                                    <input ng-model="item.show" class="sInput" type="text">
+                                </td>
+                                <td>
+                                    <input ng-model="item.validSrc.name" class="sInput" ng-disabled="rightBarType==5 && indexChecked==$index" ng-click="showLocation(5, $index)">
+                                </td>
+                                <td>
+                                    <input ng-model="item.validPrice" class="sInput" type="number">
+                                </td>
+                                <td>
+                                    <input ng-model="item.validTime" class="sInput" type="number">
+                                </td>
+                                <td>
+                                    <input ng-model="item.discountRule.description" class="sInput" ng-disabled="rightBarType==4 && indexChecked==$index" ng-click="showDiscountRule(4, $index)" }}</td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-default" ng-click="saveDiscountRuleMap($index)">保存</button>
+                                        </div>
+                                    </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- end of table -->
+                <div ng-if="pageType==1">
+                    <p>
+                        <span class="tip">代理所属区域：</span>
+                        <input class="mouseOver" ng-click="showLocation(1)" ng-disabled="rightBarType==1" ng-model="discountRuleMap.src.name">
+                    </p>
+                    <p>
+                        <span class="tip">优惠券显示名称：</span>
+                        <input class="mouseOver" ng-model="discountRuleMap.show" type="text">
+                    </p>
+                    <p>
+                        <span class="tip">限定优惠券使用起始地：</span>
+                        <input class="mouseOver" ng-click="showLocation(3)" ng-disabled="rightBarType==3" ng-model="discountRuleMap.validSrc.name">
+                    </p>
+                    <p>
+                        <span class="tip">限定优惠券使用门槛价格(元）：</span>
+                        <input class="mouseOver" ng-model="discountRuleMap.validPrice" type="number">
+                    </p>
+                    <p>
+                        <span class="tip">限定优惠券使用有效期（天）：</span>
+                        <input class="mouseOver" ng-model="discountRuleMap.validTime" type="number">
+                    </p>
+                    <p>
+                        <span class="tip">对应优惠券优惠规则：</span>
+                        <input class="mouseOver" ng-click="showDiscountRule(2)" ng-disabled="rightBarType==2" ng-model="discountRuleMap.discountRule.description">
+                    </p>
+
+                    <button type="button" class="btn btn-primary" ng-click="add()">增加</button>
+                </div>
+                <!-- end of add rule map -->
+
+                <!-- panel for items -->
+                <div class="panel panel-primary rightBar" ng-if="rightBarType!=0">
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-remove mouseOver" ng-click="hideRightBar()"></span> {{rightBarHead}}
+                    </div>
+                    <div class="panel-body">
+                        <!-- for location -->
+                        <div ng-if="rightBarType==1 || rightBarType==3 || rightBarType==5" class="radio" ng-repeat='item in rightBarItems track by $index'>
+                            <label>
+                                <input type="radio" value="{{item}}" ng-model="discountRuleMapInfo.src" name="radio"> {{item.name}}
+                            </label>
+                        </div>
+                        <!-- for agent commission rule -->
+                        <div ng-if="rightBarType==2 || rightBarType==4" class="radio" ng-repeat='item in rightBarItems track by $index'>
+                            <label>
+                                <input type="radio" value="{{item}}" ng-model="discountRuleMapInfo.discountRule" name="radio"> {{item.description}}
+                            </label>
+                        </div>
+
+                    </div>
+                    <!-- end of panel body -->
+                    <div class="panel-footer">
+                        <button type="button" class="btn btn-default" ng-click="checked()">确定</button>
+                    </div>
+                </div>
+                <!-- end of right bar -->
+            </div>
+        </div>
+        <!-- end of agent code discount rule map -->
 
     </div>
-  </body>
+</body>
 
 
-  <script src="/javascript/angular.min.js"></script>
-  <script src="/javascript/ui-bootstrap-tpls-0.13.4.min.js"></script>
-  <script src="/javascript/consoleAgent.js"></script>
+<script src="/javascript/angular.min.js"></script>
+<script src="/javascript/ui-bootstrap-tpls-0.13.4.min.js"></script>
+<script src="/javascript/consoleAgent.js"></script>
 
 </html>

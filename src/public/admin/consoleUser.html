@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN" ng-app="app">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,141 +16,145 @@
     <link rel="stylesheet" href="/stylesheets/console.css">
     <link rel="stylesheet" href="/stylesheets/consoleUser.css">
 
-  </head>
+</head>
 
-  <body>
+<body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <span class="navbar-brand" style="color: white"> Jike 后台管理 </span>
-          <ul class="nav navbar-nav mynav">
-            <li><a href="/admin/consoleRoute.html">路线</a></li>
-            <li class="active"><a href="/admin/consoleUser.html">用户</a></li>
-            <li><a href="/admin/consoleCoupon.html">优惠券</a></li>
-            <li><a href="/admin/consoleCar.html">车辆</a></li>
-            <li><a href="/admin/consoleOrder.html">订单</a></li>
-            <li><a href="/admin/consoleLocation.html">地点</a></li>
-          </ul>
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <span class="navbar-brand" style="color: white"> InstCar 后台管理 </span>
+                <ul class="nav navbar-nav mynav">
+                    <li><a href="/admin/consoleRoute.html">路线</a></li>
+                    <li class="active"><a href="/admin/consoleUser.html">用户</a></li>
+                    <li><a href="/admin/consoleCoupon.html">优惠券</a></li>
+                    <li><a href="/admin/consoleCar.html">车辆</a></li>
+                    <li><a href="/admin/consoleOrder.html">订单</a></li>
+                    <li><a href="/admin/consoleLocation.html">地点</a></li>
+                </ul>
+            </div>
         </div>
-      </div>
     </nav>
 
     <div class="container-fluid">
-      <div class="row" ng-controller="PageController">
-        <div class="col-sm-3 col-md-2 sidebar">
-          <ul class="nav nav-sidebar">
-            <li ng-class="{'active': page.pageName=='ViewUser'}">
-              <a href="##" ng-click="switchPage('ViewUser')">查看用户</a>
-            </li>
-            <li ng-class="{'active': page.pageName=='ViewUserOrder'}">
-              <a href="##" ng-click="switchPage('ViewUserOrder')">查看用户订单</a>
-            </li>
-            <li ng-class="{'active': page.pageName=='ViewPassenger'}">
-              <a href="##" ng-click="switchPage('ViewPassenger')">查看乘客信息</a>
-            </li>
-          </ul>
+        <div class="row" ng-controller="PageController">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li ng-class="{'active': page.pageName=='ViewUser'}">
+                        <a href="##" ng-click="switchPage('ViewUser')">查看用户</a>
+                    </li>
+                    <li ng-class="{'active': page.pageName=='ViewUserOrder'}">
+                        <a href="##" ng-click="switchPage('ViewUserOrder')">查看用户订单</a>
+                    </li>
+                    <li ng-class="{'active': page.pageName=='ViewPassenger'}">
+                        <a href="##" ng-click="switchPage('ViewPassenger')">查看乘客信息</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
 
-      <!-- view user page -->
-      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="ViewUser">
-        <div ng-if="page.pageName=='ViewUser'">
-          <div class="table-responsive">
-            <table class="table table-striped table-condensed table-bordered">
-              <thead>
-                <tr>
-                  <th>用户名</th>
-                  <th>手机号</th>
-                  <th>身份证</th>
-                  <th>操作</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr ng-repeat = "item in userArray track by $index">
-                  <td>{{item.name}}</td>
-                  <td>{{item.phone}}</td>
-                  <td>{{item.idnum}}</td>
-                  <td>
-                    <div class="btn-group" role="group">
-                      <button type="button" class="btn btn-default" ng-click="viewOrder($index)">查看订单</button>
-                    </div>
-                    <div class="btn-group" role="group">
-                      <button type="button" class="btn btn-default" ng-click="viewPassenger($index)">查看乘客</button>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div> <!-- end of table div -->
-          <nav>
-            <ul class="pagination">
-              <li ng-repeat="item in userPages track by $index" ng-class="{active: $index == pageIndex}"><a href="##" ng-click="switchUserPage($index)">{{item}}</a></li>
-            </ul>
-          </nav> <!-- end of pigination -->
+        <!-- view user page -->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="ViewUser">
+            <div ng-if="page.pageName=='ViewUser'">
+                <div class="table-responsive">
+                    <table class="table table-striped table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th>用户名</th>
+                                <th>手机号</th>
+                                <th>身份证</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in userArray track by $index">
+                                <td>{{item.name}}</td>
+                                <td>{{item.phone}}</td>
+                                <td>{{item.idnum}}</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-default" ng-click="viewOrder($index)">查看订单</button>
+                                    </div>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-default" ng-click="viewPassenger($index)">查看乘客</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- end of table div -->
+                <nav>
+                    <ul class="pagination">
+                        <li ng-repeat="item in userPages track by $index" ng-class="{active: $index == pageIndex}"><a href="##" ng-click="switchUserPage($index)">{{item}}</a></li>
+                    </ul>
+                </nav>
+                <!-- end of pigination -->
+            </div>
         </div>
-      </div>
 
-      <!-- view user order page -->
-      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="ViewUserOrder">
-        <div ng-if="page.pageName=='ViewUserOrder'">
-          <span>用户名：{{page.user.name}}</span>
-          <h3>订单</h3>
-          <div class="table-responsive">
-            <table class="table table-striped table-condensed table-bordered">
-              <thead>
-                <tr>
-                  <th>订单创建时间</th>
-                  <th>订单状态</th>
-                  <th>优惠前价格</th>
-                  <th>优惠后价格</th>
-                  <th>路线</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr ng-repeat="item in page.userOrder">
-                  <td>{{item.createdAt}}</td>
-                  <td>{{item.state}}</td>
-                  <td>{{item.price}}</td>
-                  <td>{{item.priceToPay}}</td>
-                  <td>{{item.route.src.name}} --> {{item.route.dest.name}}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>  <!-- end of table div -->
+        <!-- view user order page -->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="ViewUserOrder">
+            <div ng-if="page.pageName=='ViewUserOrder'">
+                <span>用户名：{{page.user.name}}</span>
+                <h3>订单</h3>
+                <div class="table-responsive">
+                    <table class="table table-striped table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th>订单创建时间</th>
+                                <th>订单状态</th>
+                                <th>优惠前价格</th>
+                                <th>优惠后价格</th>
+                                <th>路线</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in page.userOrder">
+                                <td>{{item.createdAt}}</td>
+                                <td>{{item.state}}</td>
+                                <td>{{item.price}}</td>
+                                <td>{{item.priceToPay}}</td>
+                                <td>{{item.route.src.name}} --> {{item.route.dest.name}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- end of table div -->
 
+            </div>
         </div>
-      </div>
 
-      <!-- view passenger order page -->
-      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="ViewPassenger">
-        <div ng-if="page.pageName=='ViewPassenger'">
-          <span>用户名：{{page.user.name}}</span>
-          <h3>乘客</h3>
-          <div class="table-responsive">
-            <table class="table table-striped table-condensed table-bordered">
-              <thead>
-                <tr>
-                  <th>乘客姓名</th>
-                  <th>身份证号</th>
-                  <th>手机号</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr ng-repeat="item in page.passengers">
-                  <td>{{item.name}}</td>
-                  <td>{{item.idnum}}</td>
-                  <td>{{item.phone}}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <!-- view passenger order page -->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="ViewPassenger">
+            <div ng-if="page.pageName=='ViewPassenger'">
+                <span>用户名：{{page.user.name}}</span>
+                <h3>乘客</h3>
+                <div class="table-responsive">
+                    <table class="table table-striped table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th>乘客姓名</th>
+                                <th>身份证号</th>
+                                <th>手机号</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in page.passengers">
+                                <td>{{item.name}}</td>
+                                <td>{{item.idnum}}</td>
+                                <td>{{item.phone}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-      </div>
 
     </div>
-  </body>
+</body>
 
 
-  <script src="/javascript/angular.min.js"></script>
-  <script src="/javascript/consoleUser.js"></script>
+<script src="/javascript/angular.min.js"></script>
+<script src="/javascript/consoleUser.js"></script>
+
 </html>
