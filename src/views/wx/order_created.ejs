@@ -1,0 +1,21 @@
+<% include top.ejs %>
+
+<div id="receipt" class="panel">
+	<div id="d0" class="e">
+		<img src="<%=config.wx.prefix%>/img/success.png" alt="success">
+		<p id="text-success">成功付款</p>
+	</div>
+	<div id="d3" class="e text-3">
+		具体车票信息可从“我的订单”中查看，我们将在发车前24小时内提供车辆信息查询，并短信通知。可凭手机号、暗号或票号上车。
+	</div>
+</div>
+<div class="large-btns">
+	<button id="review" class="btn orange">返回订单</button>
+</div>
+<script>
+$('#review').click(function() {
+	window.location.href = '<%=config.wx.prefix%>/my/order/<%=orderid%>';
+});
+</script>
+
+<% include bottom.ejs %>

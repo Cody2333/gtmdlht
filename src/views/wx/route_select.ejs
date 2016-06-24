@@ -1,0 +1,38 @@
+<% include top.ejs %>
+<script>var prefix = '<%=config.wx.prefix%>';</script>
+<div id="page-main" class="page">
+	<div id="group" class="panel">
+		<div id="entry-src" class="entry">
+			<span id="icon-src" class="icon-addon"></span>
+			<span id="src" class="entry-main text-3">点此选择</span>
+			<span class="fold-addon"></span>
+		</div>
+		<div id="entry-dest" class="entry">
+			<span id="icon-dest" class="icon-addon"></span>
+			<span id="dest" class="entry-main text-3">请先选择起点</span>
+			<span class="fold-addon"></span>
+		</div>
+		<div id="entry-schedule" class="entry">
+			<span class="icon-addon icon-schedule"></span>
+			<span id="schedule" class="entry-main text-3">请先选择起点和终点</span>
+			<span class="fold-addon"></span>
+		</div>
+		<div class="large-btns margin">
+			<button id="btn-view" class="btn orange">查看详情</button>
+		</div>
+	</div>
+</div>
+<div id="page-cities" class="page hidden">
+<div id="city-list" class="panel">
+</div>
+</div>
+<div id="page-locations" class="page hidden">
+<div id="location-list" class="panel">
+</div>
+</div>
+<div id="page-schedule" class="page hidden">
+<div id="schedule-list" class="panel">
+</div>
+</div>
+
+<% include bottom.ejs %>

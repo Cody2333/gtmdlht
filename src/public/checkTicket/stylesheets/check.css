@@ -1,0 +1,30 @@
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #eee;
+}
+
+.form-signIn {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-signIn .form-control {
+  padding: 10px;
+}
+form>button {
+  margin-top: 10px;
+}
+
+.sInput {
+  width: 70;
+  height: 22px;
+  padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.err {
+  color: red;
+}

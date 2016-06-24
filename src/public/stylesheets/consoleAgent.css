@@ -1,0 +1,18 @@
+.form-control {
+	width: 70%;
+}
+.inputPhone {
+	width: 30%;
+}
+.error {
+	color: red;
+}
+
+.testCommissionRule {
+	margin-top: 10px;
+	border: solid 1px yellow;
+}
+
+.sInput {
+	width: 100%;
+}

@@ -1,0 +1,89 @@
+<% include top.ejs %>
+<script>var orderId = '<%=orderid%>', prefix = '<%=config.wx.prefix%>';</script>
+
+<div id="page-order" class="page">
+	<div id="schedules" class="panel">
+		<div id="fold-schedule" class="entry">
+			<span class="icon-addon icon-schedule"></span>
+			<span id="schedule" class="entry-main"></span>
+		</div>
+	</div>
+	<div id="info" class="panel">
+		<div class="basic-info">
+			<div class="bi-t">
+				<div class="bi-tl">
+					<div class="bi-tlt">
+						<div class="ilb">
+							<span class="icon icon-src"></span>
+							<span id="src"></span>
+							<span class="icon icon-to"></span>
+						</div>
+						<div class="ilb">
+							<span class="icon icon-dest"></span>
+							<span id="dest"></span>
+						</div>
+					</div>
+					<div class="bi-tlb"><span id="personsPaid"></span>人已加入</div>
+				</div>
+				<div class="bi-tr"><div class="bi-trt"></div><div class="bi-trb">￥<span id="price"></span></div></div>
+			</div>
+			<div class="bi-b">
+				<span class="icon icon-departure"></span>
+				<span id="departure"><span id="dept"></span>出发</span>
+				<span id="vsperate"></span>
+				<span id="labels">
+					<span class="label">准点出发</span>
+				</span>
+			</div>
+		</div>
+		<div class="entry">
+			<span class="icon-addon icon-orderid"></span>
+			<span class="entry-main">订单号：<span id="ordernum"></span></span>
+		</div>
+		<div id="fold-agreement" class="entry">
+			<span class="icon-addon icon-agreement"></span>
+			<span class="entry-main">用车协议</span>
+			<span class="fold-addon"></span>
+		</div>
+		<div id="fold-detail" class="entry">
+			<span class="icon-addon icon-detail"></span>
+			<span class="entry-main">线路详情</span>
+			<span class="fold-addon"></span>
+		</div>
+		<div id="content-detail" class="entry content hidden">
+		</div>
+		<div id="fold-notice" class="entry">
+			<span class="icon-addon icon-notice"></span>
+			<span class="entry-main">乘客须知</span>
+			<span class="fold-addon"></span>
+		</div>
+		<div id="fold-psg" class="entry">
+			<span class="icon-addon icon-psg"></span>
+			<span class="entry-main">乘客和车票</span>
+			<span class="fold-addon"></span>
+		</div>
+		<div id="content-psg" class="entry content hidden"></div>
+	</div>
+	<div id="finalprice">总价：￥<span id="totalprice"></span></div>
+	<div id="tips" class="hidden">
+	温馨提示：车票购买后将为您保留座位，请在15分钟内完成支付，否则订单失效
+	</div>
+	<div class="panel">
+		<div class="large-btns">
+			<button id="btn-pay" class="btn orange hidden">同意用车协议并付款</button>
+			<button id="btn-cancel" class="btn red hidden">取消订单</button>
+		</div>
+		<div id="state" class="hidden">已取消</div>
+	</div>
+</div>
+<div id="page-psg" class="page hidden">
+<div id="psg-list" class="panel">
+</div>
+</div>
+<div id="page-agreement" class="page hidden">
+<pre id="agreement"></pre>
+</div>
+<div id="page-toknow" class="page hidden">
+<pre id="toknow"></pre>
+</div>
+<% include bottom.ejs %>

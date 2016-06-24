@@ -1,0 +1,37 @@
+.myButton {
+    float: left;
+    background-color: #1ABC9C;
+    min-width: 100px;
+    margin-right: 20px;
+}
+.inputLocation {
+    float: left;
+    width: 300px;
+    margin-right: 20px;
+}
+.inputLat, .inputLng {
+    float: left;
+    width: 100px;
+    margin-right: 20px;
+}
+.btnSubmit {
+    width: 70px;
+    background-color: #F1C40F;
+    margin-left: 30px;
+}
+.choiceGroup {
+    margin-top: 20px;
+    padding: 10px;
+    max-width: 40%;
+    border: solid 1px #727272;
+    box-shadow: 2px 2px 10px #888888;
+    margin-bottom: 20px;
+}
+.choiceGroup > span {
+    display: inline-block;
+    padding: 5px;
+}
+.choiceGroup > span:hover {
+    cursor: pointer;
+    color: #428bca;
+}

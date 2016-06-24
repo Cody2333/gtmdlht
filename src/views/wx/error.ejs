@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="mobile-web-app-capable" content="yes">
+	<title>出错啦 - <%=code%></title>
+	<style>
+p {
+	font-family: sans-serif;
+	font-size: 30px;
+	margin: 0;
+	color: #ffe07f;
+}
+	</style>
+
+</head>
+<body style="background-color: #9fc7b5; text-align: center">
+	<img src="<%=config.wx.prefix%>/img/boy.png" alt="error" style="margin: 20% auto 10%;width: 40%">
+	<p style="margin-top: 30px">出错啦</p>
+	<p>ERROR <%=code%></p>
+	<p><%=msg%></p>
+<% if (locals.detail) { %>
+	<p><%=detail%></p>
+<% } %>
+</body>
+</html>

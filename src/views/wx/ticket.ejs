@@ -1,0 +1,19 @@
+<% include top.ejs %>
+
+<script>var prefix='<%=config.wx.prefix%>';</script>
+
+<div id="page-tickets" class="page">
+	<div id="ticket-list" class="panel">
+		<div id="noticket" class="entry content">
+您的账户中还没有有效的车票
+		</div>
+	</div>
+
+	<div class="panel">
+		<div class="large-btns">
+			<button id="btn-use" class="btn orange">检票上车</button>
+		</div>
+	</div>
+</div>
+
+<% include bottom.ejs %>

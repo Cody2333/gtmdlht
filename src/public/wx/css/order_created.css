@@ -1,0 +1,42 @@
+#receipt {
+	border: 1px solid #d4d4d4;
+	margin: 10px;
+	background: #fff;
+	padding: 0 12px;
+}
+
+#receipt>.e {
+	border: none;
+	padding: 12px 6px;
+}
+
+#receipt>.e:not(:first-child) {
+	border-top: 1px solid #d4d4d4;
+}
+
+#d0 {
+	display: block;
+	text-align: center;
+}
+
+#text-success {
+	color: #57c793;
+	margin: 0;
+	font-size: 20px;
+}
+
+#d1, #d2 {
+	padding-left: 20px !important;
+}
+
+#amount {
+	color: #fba223;
+}
+
+.btn-pay {
+	margin: 10px;
+}
+
+.btn-pay:not(:first-child) {
+	margin-top: 0;
+}

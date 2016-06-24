@@ -1,0 +1,54 @@
+{
+	"button":[
+		{
+			"name": "巴士路线",
+			"sub_button": [
+				{
+					"type": "view",
+					"name": "选择路线",
+					"url": "route/select"
+				},
+				{
+					"type": "view",
+					"name": "申请路线",
+					"url": "route/submit"
+				}
+			]
+		},
+		{
+			"name": "我的即客",
+			"sub_button": [
+				{
+					"type": "view",
+					"name": "检票上车",
+					"url": "my/ticket"
+				},
+				{
+					"type": "view",
+					"name": "我的订单",
+					"url": "my/order"
+				},
+				{
+					"type": "view",
+					"name": "常用乘客",
+					"url": "my/passenger"
+				},
+				{
+					"type": "view",
+					"name": "我的优惠券",
+					"url": "my/coupon"
+				},
+				{
+					"type": "view",
+					"name": "退出登录",
+					"url": "../api/user/logout"
+				}
+			]
+		},
+		{	
+			"type":"view",
+			"name":"关于我们",
+			"url":"about"
+		}
+	]
+}

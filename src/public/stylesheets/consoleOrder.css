@@ -1,0 +1,19 @@
+.inputTime {
+	height: 30px;
+}
+
+.form-control {
+	width: 70%;
+}
+.inputOrderNumber {
+	width: 30%;
+}
+
+.error {
+	color: red;
+}
+
+.datetime {
+	display: inline-block;
+	float: left;
+}

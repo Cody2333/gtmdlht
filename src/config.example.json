@@ -1,0 +1,11 @@
+{
+	"wx": {
+		"hostPrefix": "",
+		"prefix": "",
+		"appid": "",
+		"appsecret": ""
+	},
+	"amap": {
+		"key": ""
+	}
+}

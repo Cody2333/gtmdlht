@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+
+    <title>检票页面</title>
+  
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="./stylesheets/check.css">
+
+    <base href="/checkTicket/" />
+
+  </head>
+  <body ng-controller="Main">
+    <div class="container-fluid">
+      <div class="row">
+        <h2 class="col-xs-8 col-xs-offset-2">Jike上车登记</h2>
+      </div>
+
+      <!-- login page -->
+      <div ng-if="isSignIn==false"> 
+        <form class="form-signIn" ng-submit="signIn()">
+          <label>班次号</label>
+          <input type="text" class="form-control" ng-model="schedule.code" ng-change="hideErr()" required>
+          <label>密码</label>
+          <input type="password" class="form-control" ng-model="schedule.password" ng-change="hideErr()" required>
+          <p class="err" ng-if="showErr">{{errInfo}}</p>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+        </form>
+      </div>
+
+      <!-- view ticket infos -->
+      <div ng-if="isSignIn==true">
+        <div class="table-responsive">
+          <table class="table table-striped table-condensed table-bordered">
+            <thead>
+              <tr>
+                <th>票码</th>
+                <th>状态</th>
+                <th>手机号</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat = 'item in tickets track by $index'>
+                <td>{{item.code}}</td>
+                <td>{{item.state}}</td>
+                <td>{{item.phone}}</td>
+                <td>
+                  <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default sInput" ng-click="use($index)">确认</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div> <!-- end of table -->
+      </div>
+
+    </div>
+  </body>
+
+   <script src="/javascript/angular.min.js"></script>
+  <script src="./javascript/check.js"></script>
+</html>

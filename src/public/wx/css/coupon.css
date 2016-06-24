@@ -1,0 +1,74 @@
+.coupon {
+	background-color: #56c692;
+	color: #e3f3db;
+	padding: 6px 12px;
+	border-radius: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.coupon.refund {
+	background-color: #54b220;
+}
+
+.coupon.disabled {
+	background-color: #aaa;
+}
+
+.coupon.adisabled {
+	background-color: #aaa;
+}
+
+.coupon>p {
+	margin: 0;
+}
+
+.coupon>.discount {
+	color: #fff;
+	font-size: 36px;
+	margin-bottom: 5px;
+}
+
+.coupon>.expiration {
+	text-align: left;
+	margin: 10px 0 5px;
+}
+
+.coupon>.text-expiration {
+	padding: 20px 0;
+}
+
+#addnew, #refcode {
+	text-align: center;
+	border: 2px dotted #aaa;
+	border-radius: 10px;
+	padding: 12px 12px;
+	margin: 0 0 10px;
+}
+
+#page-list {
+	padding: 10px;
+}
+
+.icon-expiration {
+	padding: 10px 10px;
+	margin-right: 10px;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAwFBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+Kz6mvAAAAP3RSTlMABggJCgwNFBcjJCUyMzQ1Ojs8PVdYdHV2iImKmJmam5ydtri5v8DBw8TIyc/Q0dfY3ujp6uv09fb4+fr8/f5bSKxKAAABSUlEQVR42nWT6XKCQBCEBw2Iq0ZN8AgxIiQRggY8ECOH/f5vlVIoduX4/sF0zbU9xJG1hXu8XI7uQpOpCjNCFIQGK4VbbxGu9nysSpI6ntlXRHpLjHe3SE0mpDNTbIXv/gH7IT0w3OPQL/QBvjtUomMjyHO0f/ElUQXpE16bbujYKcVvx+Fj76DfG4wToT4g9JHEtyIGTKoX0AorIiW8siYBu4YKaVhTk4DW0GiJebNgjiW5eGkWvMKlE9RmgYoTRZAeBBlOvixEZYGDOz9cwEtwxBK8SRGxySVmVIWPyRclIi6Kr7oKS89K9iL15CEWJ8/18UES9zLD+HJdXPbxnlnOg1VnOQveU2Faq5JDthAwwfb+oFTfz2yfwzykZlc4JDOF9zB9S4+R2tPR7fRGUztFnJ8ep2ecUfC36tWNNfnYBHEcbD4mQsv/lCMzByDtY3cAAAAASUVORK5CYII=);
+	background-repeat: no-repeat;
+	background-size: 20px;
+	background-position: center;
+}
+
+#code {
+	border: 1px solid #aaa;
+	border-radius: 5px 0 0 5px;
+	font-size: 17px;
+	padding: 6px 12px;
+	margin: 0;
+}
+
+#btn-redeem {
+	width: 40px;
+	margin: 0;
+	border-radius: 0 5px 5px 0;
+}

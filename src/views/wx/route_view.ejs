@@ -1,0 +1,98 @@
+<% include top.ejs %>
+<script>var routeId = '<%=routeid%>', prefix = '<%=config.wx.prefix%>';</script>
+<div id="page-schedule" class="page">
+	<div id="schedules" class="panel">
+		<div id="fold-schedule" class="entry">
+			<span class="icon-addon icon-schedule"></span>
+			<span id="schedule" class="entry-main"></span>
+		</div>
+	</div>
+	<div id="info" class="panel">
+		<div class="basic-info">
+			<div class="bi-t">
+				<div class="bi-tl">
+					<div class="bi-tlt">
+						<div class="ilb">
+							<span class="icon icon-src"></span>
+							<span id="src"></span>
+							<span class="icon icon-to"></span>
+						</div>
+						<div class="ilb">
+							<span class="icon icon-dest"></span>
+							<span id="dest"></span>
+						</div>
+					</div>
+					<div class="bi-tlb"><span id="personsPaid"></span>人已加入</div>
+				</div>
+				<div class="bi-tr"><div class="bi-trt"></div><div class="bi-trb">￥<span id="price"></span></div></div>
+			</div>
+			<div class="bi-b">
+				<span class="icon icon-departure"></span>
+				<span id="departure"><span id="dept"></span>出发</span>
+				<span id="vsperate"></span>
+				<span id="labels">
+					<span class="label">准点出发</span>
+				</span>
+			</div>
+		</div>
+		<div id="fold-detail" class="entry">
+			<span class="icon-addon icon-detail"></span>
+			<span class="entry-main">线路详情</span>
+			<span class="fold-addon"></span>
+		</div>
+		<div id="content-detail" class="content hidden">
+		</div>
+		<div id="fold-notice" class="entry">
+			<span class="icon-addon icon-notice"></span>
+			<span class="entry-main">乘客须知</span>
+			<span class="fold-addon"></span>
+		</div>
+	</div>
+	<div class="panel">
+		<div class="large-btns">
+			<button id="btn-join" class="btn green">加入路线</button>
+		</div>
+	</div>
+</div>
+<div id="page-psg" class="page hidden">
+	<div id="passenger-list" class="panel">
+	</div>
+	<div class="panel">
+		<div class="large-btns">
+			<button id="btn-add-psg" class="btn green">添加乘客</button>
+			<button id="btn-coupon" class="btn orange">下一步</button>
+		</div>
+	</div>
+</div>
+<div id="page-add-psg" class="page hidden">
+	<div id="group-edit" class="panel">
+		<div class="entry">
+			<span id="icon-name" class="icon-addon"></span>
+			<input id="name" class="entry-main" maxlength="10" placeholder="姓名">
+		</div>
+		<div class="entry">
+			<span id="icon-phone" class="icon-addon"></span>
+			<input id="phone" class="entry-main" type="tel" maxlength="11" placeholder="手机号">
+		</div>
+		<div class="entry">
+			<span id="icon-idnum" class="icon-addon"></span>
+			<input id="idnum" class="entry-main" type="tel" maxlength="18" placeholder="身份证">
+		</div>
+		<div class="large-btns">
+			<button id="btn-create2" class="btn orange">确认添加</button>
+		</div>
+	</div>
+</div>
+<div id="page-coupon" class="page hidden">
+	<div id="coupon-list" class="panel">
+	</div>
+	<div class="panel">
+		<div class="large-btns">
+			<button id="btn-review" class="btn orange">下一步</button>
+		</div>
+	</div>
+</div>
+<div id="page-toknow" class="page hidden">
+<pre id="toknow"></pre>
+</div>
+<% include bottom.ejs %>

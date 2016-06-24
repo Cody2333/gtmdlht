@@ -1,0 +1,37 @@
+<% include top.ejs %>
+
+<div id="page-passengers" class="page">
+	<div id="userid" class="panel">
+	</div>
+	<div id="group-passengers" class="panel">
+	</div>
+	<div class="panel">
+		<div class="large-btns">
+			<button id="btn-create" class="btn orange large margin top">新增</button>
+		</div>
+	</div>
+</div>
+
+<div id="page-edit" class="page hidden">
+	<div id="group-edit" class="panel">
+		<div class="entry">
+			<span id="icon-name" class="icon-addon"></span>
+			<input id="name" class="entry-main" maxlength="10" placeholder="姓名">
+		</div>
+		<div class="entry">
+			<span id="icon-phone" class="icon-addon"></span>
+			<input id="phone" class="entry-main" type="tel" maxlength="11" placeholder="手机号">
+		</div>
+		<div class="entry">
+			<span id="icon-idnum" class="icon-addon"></span>
+			<input id="idnum" class="entry-main" type="tel" maxlength="18" placeholder="身份证">
+		</div>
+		<div class="large-btns">
+			<button id="btn-edit" class="btn orange">确认修改</button>
+			<button id="btn-delete" class="btn red">删除乘客</button>
+			<button id="btn-create2" class="btn orange">确认添加</button>
+		</div>
+	</div>
+</div>
+
+<% include bottom.ejs %>

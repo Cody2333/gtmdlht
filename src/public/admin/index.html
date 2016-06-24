@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="UTF-8">
+  <title>管理员登陆</title>
+  <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" href="/stylesheets/console.css">
+  <link rel="stylesheet" href="/stylesheets/login.css">
+</head>
+<body ng-controller="adminSignIn">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <span class="navbar-brand" style="color: white"> Jike 后台管理</span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4 loginForm">
+        <h1><strong>管理员登陆</strong></h1>
+        <hr>
+        <form ng-submit="signIn()">
+          <div class="form-group">
+            <label>用户名：</label>
+            <input type="text" class="form-control" ng-model="adminName">
+          </div>
+          <div class="form-group">
+            <label>密码：</label>
+            <input type="password" class="form-control" ng-model="adminPassword">
+          </div>
+          <button type="submit" class="btn btn-default">登录</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+
+  <script src="/javascript/angular.min.js"></script>
+  <script src="/javascript/signIn.js"></script>
+</html>

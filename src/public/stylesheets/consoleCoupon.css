@@ -1,0 +1,29 @@
+.sInput {
+	width: 100%;
+}
+
+.testDiscountRule {
+	margin-top: 10px;
+	border: solid 1px yellow;
+}
+
+.phoneGroup {
+	width: 400px;
+	overflow: auto;
+}
+.phoneGroup>span {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.inputPhone {
+	width: 30%;
+}
+
+.error {
+	color: red;
+}
+
+.inputPhone {
+	margin-top: 20px;
+}

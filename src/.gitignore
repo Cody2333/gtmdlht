@@ -1,0 +1,17 @@
+node_modules
+.settings
+npm-debug.log
+
+config.json
+
+start.sh
+
+# VIM
+*~
+*.swp
+.avoscloud/
+.npm-debug.txt
+
+.avoscloud/
+
+./public/img/.avoscloud/

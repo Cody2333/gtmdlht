@@ -1,0 +1,9 @@
+.loginForm {
+	border: solid 1px #00ff66;
+	border-radius: 25px;
+	box-shadow: 2px 2px 5px #00ff66;
+	padding-bottom: 20px;
+}
+.loginForm>hr {
+	border: solid 1px #00ff66;
+}
